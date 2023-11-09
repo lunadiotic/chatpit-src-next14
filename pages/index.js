@@ -19,8 +19,12 @@ export default function Home() {
           {!!user && <Link href="api/auth/logout">Logout</Link>}
           {!user && (
             <>
-              <Link href="api/auth/login" className="px-4 py-2 text-white rounded-md bg-emerald-500 hover:bg-emerald-600">Login</Link>
-              <Link href="api/auth/signup" className="px-4 py-2 text-white rounded-md bg-emerald-500 hover:bg-emerald-600">Signup</Link>
+              <Link href="api/auth/login" className="btn">
+                Login
+              </Link>
+              <Link href="api/auth/signup" className="btn">
+                Signup
+              </Link>
             </>
           )}
         </div>
@@ -34,13 +38,13 @@ export async function getServerSideProps({ req, res }) {
   if (!!session) {
     return {
       redirect: {
-        destination: '/chat',
-        permanent: false
-      }
-    }
+        destination: "/chat",
+        permanent: false,
+      },
+    };
   }
 
   return {
     props: {},
-  }
+  };
 }
